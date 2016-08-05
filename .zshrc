@@ -5,12 +5,16 @@
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="bira"
+ZSH_THEME="wild-cherry"
 #bira
 #robbyrussell
 #candy
 #gallois
 #gentoo
+#agnoster 
+#wildcherry
+#funky
+#random-emoji
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -54,11 +58,12 @@ ZSH_THEME="bira"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(emoji zsh-syntax-highlighting)
 
 # User configuration
 
-  export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl"
+  export JAVA_HOME=/home/maldad/installed/jdk1.8.0_91/jre
+  export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:$JAVA_HOME/bin:$PATH:/home/maldad/.gem/ruby/2.2.0/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -87,7 +92,24 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# config
 alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vim/vimrc"
-alias httpserver="thttpd -D -p 8080 -nor -l -"
 alias tmuxconfig="vim ~/.tmux.conf"
+#servers
+alias httpserver="thttpd -D -p 8080 -nor -l -"
+alias start_postgres="sudo systemctl start postgresql.service"
+alias check_postgres="sudo systemctl status postgresql.service"
+#programming
+alias julia="/home/maldad/installed/julia/bin/julia"
+alias java="/home/maldad/installed/jdk1.8.0_91/bin/java"
+alias javac="/home/maldad/installed/jdk1.8.0_91/bin/javac"
+#util
+alias cls="clear"
+#git
+alias gca="git commit -a"
+alias gsta="git status"
+alias gpom="git push origin master"
+#talend for TABD
+alias talend="/home/maldad/Paquetes/TOS_DI-20160704_1411-V6.2.1/./TOS_DI-linux-gtk-x86_64"
