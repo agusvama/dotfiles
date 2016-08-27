@@ -1,4 +1,4 @@
-execute pathogen#infect()
+"execute pathogen#infect()
 "tabs
 set tabstop=4
 set shiftwidth=4
@@ -25,13 +25,3 @@ set foldmethod=indent
 set foldlevel=99
 "set spacebar for fold code
 nnoremap <space> za
-
-
-
-"powerline plugin
-"python from powerline.vim import setup as powerline_setup
-"python powerline_setup()
-"python del powerline_setup
-"let g:Powerline_symbols = 'fancy'
-"set laststatus=2
-"set encoding=utf-8
