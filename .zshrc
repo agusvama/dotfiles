@@ -1,11 +1,28 @@
+# If you come from bash you might have to change your $PATH.
+export PATH=~/.local/bin:$PATH
+alias ls='ls --color=auto'
+
+#aliases
+#util
+alias cls='clear'
+alias cdls='cd && clear'
+alias rm='rm -i'
+alias mv='mv -i'
+alias lsl='ls -l'
+alias lsa='ls -a'
+alias lsla='ls -la'
+# config
+alias zshconfig="vim ~/.zshrc"
+alias vimconfig="vim ~/.vim/vimrc"
+alias tmuxconfig="vim ~/.tmux.conf"
+
 # Path to your oh-my-zsh installation.
   export ZSH=/home/maldad/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="wild-cherry"
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="wildcherry"
 #bira
 #robbyrussell
 #candy
@@ -58,15 +75,13 @@ ZSH_THEME="wild-cherry"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(emoji zsh-syntax-highlighting)
+plugins=(git emoji)
+
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-  export JAVA_HOME=/home/maldad/installed/jdk1.8.0_91/jre
-  export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:$JAVA_HOME/bin:$PATH:/home/maldad/.gem/ruby/2.2.0/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
-
-source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -92,24 +107,3 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# config
-alias zshconfig="vim ~/.zshrc"
-alias vimconfig="vim ~/.vim/vimrc"
-alias tmuxconfig="vim ~/.tmux.conf"
-#servers
-alias httpserver="thttpd -D -p 8080 -nor -l -"
-alias start_postgres="sudo systemctl start postgresql.service"
-alias check_postgres="sudo systemctl status postgresql.service"
-#programming
-alias julia="/home/maldad/installed/julia/bin/julia"
-alias java="/home/maldad/installed/jdk1.8.0_91/bin/java"
-alias javac="/home/maldad/installed/jdk1.8.0_91/bin/javac"
-#util
-alias cls="clear"
-#git
-alias gca="git commit -a"
-alias gsta="git status"
-alias gpom="git push origin master"
-#talend for TABD
-alias talend="/home/maldad/Paquetes/TOS_DI-20160704_1411-V6.2.1/./TOS_DI-linux-gtk-x86_64"

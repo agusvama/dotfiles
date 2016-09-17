@@ -16,7 +16,9 @@ export PATH="~/.local/bin:$PATH"
 #util
 alias cls='clear'
 alias cdls='cd && clear'
+alias rm='rm -i'
+alias mv='mv -i'
+alias lsa='ls -a'
+alias lsl='ls -l'
+alias lsla='ls -la'
 #alias tmux='tmux -u'
-#programmin
-#alias java="/home/maldad/installed/jdk1.8.0_101/bin/java"
-#alias javac="/home/maldad/installed/jdk1.8.0_101/bin/javac"
