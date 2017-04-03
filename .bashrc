@@ -1,24 +1,28 @@
-#
-# ~/.bashrc
-#
+#PS1=' ( ._.)φ__ \w > '
+#cyan
+PS1="\`if [ \$? = 0 ]; then echo \[\e[36m\]'( ._.)φ__ \w > '\[\e[0m\]; else echo \[\e[31m\]'( o_o)φ__ \w > '\[\e[0m\]; fi\`"
+#green
+# PS1="\`if [ \$? = 0 ]; then echo \[\e[32m\]'( ._.)φ__ \w > '\[\e[0m\]; else echo \[\e[31m\]'( o_o)φ__ \w > '\[\e[0m\]; fi\`"
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+export PATH="$HOME/.local/bin:/usr/sbin/:$HOME/.node_modules_global/bin:$PATH"
 
+#aliases
 alias ls='ls --color=auto'
-#PS1='[\u@\h \W]\$ '
-PS1=' ( ..)φ__ \w > '
-
-#export PATH="$HOME/installed/jdk1.8.0_101/bin/:$HOME/links:$PATH"
-export PATH="~/.local/bin:$PATH"
-
-#modified by maldad:
-#util
 alias cls='clear'
-alias cdls='cd && clear'
-alias rm='rm -i'
-alias mv='mv -i'
-alias lsa='ls -a'
-alias lsl='ls -l'
-alias lsla='ls -la'
-#alias tmux='tmux -u'
+alias cdls='clear && cd'
+alias vi='vim'
+alias sur='su root'
+alias rm~='rm -R *~;rm .*~'
+#alias por el semestre
+alias decimo='cd ~/Docu/10no/'
+#java
+alias j="javac -d classes/"
+alias jj="java -classpath classes/"
+
+#append any additional sh scripts found in /etc/profile.d/:
+for profile_script in /etc/profile.d/*.sh ; do
+    if [ -x $profile_script ]; then
+        . $profile_script
+    fi
+done
+unset profile_script
