@@ -17,7 +17,10 @@ alias rm~='rm -R *~;rm .*~'
 alias decimo='cd ~/Docu/10no/'
 #java
 alias j="javac -d classes/"
-alias jj="java -classpath classes/"
+alias jm="javac -d classes/ Main.java"
+alias jjm="java -classpath classes/ Main"
+#hdmi
+alias hdmi="xrandr --output HDMI1 --mode 1280x720"
 
 #append any additional sh scripts found in /etc/profile.d/:
 for profile_script in /etc/profile.d/*.sh ; do

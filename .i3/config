@@ -12,7 +12,7 @@ exec_always feh --bg-fill ~/background
 bindsym $mod+Return exec urxvt
 
 font pango:DejaVu Sans Mono 12
-set $mod Mod1
+set $mod Mod4
 
 # change focus
 bindsym $mod+h focus left
@@ -22,8 +22,8 @@ bindsym $mod+l focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
+bindsym $mod+Shift+j move up
+bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move right
 
 # Start i3bar to display a workspace bar (plus the system information i3status

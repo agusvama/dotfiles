@@ -31,7 +31,7 @@ set foldlevel=99
 nnoremap <backspace> za
 
 "color
-colo seattle
+colo moonfly
 
 "argwrap
 nnoremap <silent> <leader>a :ArgWrap<CR>
@@ -46,3 +46,4 @@ let g:netrw_liststyle = 3
 let g:netrw_banner = 1
 "open files in a new tab
 let g:netrw_browse_split = 3
+
