@@ -47,3 +47,14 @@ let g:netrw_banner = 1
 "open files in a new tab
 let g:netrw_browse_split = 3
 
+set relativenumber
+
+"syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
