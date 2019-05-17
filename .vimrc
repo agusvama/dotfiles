@@ -47,14 +47,51 @@ let g:netrw_banner = 1
 "open files in a new tab
 let g:netrw_browse_split = 3
 
-set relativenumber
+"set relativenumber
 
-"syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"status bar
+set laststatus=2
+set statusline=
+set statusline+=%1*
+hi User1 ctermfg=darkgreen
+set statusline+=%=
+set statusline+=|
+set statusline+=\ 
+set statusline+=%l
+set statusline+=:
+set statusline+=%c
+set statusline+=\ 
+set statusline+=|
+set statusline+=\ 
+set statusline+=%F
+set statusline+=\ 
+set statusline+=|
+set statusline+=\ 
+set statusline+=%{b:gitbranch}
+set statusline+=\ 
+set statusline+=%m
+set statusline+=\ 
+set statusline+=|
+set statusline+=\ 
+set statusline+=%y
+set statusline+=\ 
+set statusline+=|
+set statusline+=\ 
+set statusline+=%{strlen(&fenc)?&fenc:'none'}
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+function! StatuslineGitBranch()
+  let b:gitbranch=""
+  if &modifiable
+    lcd %:p:h
+    let l:gitrevparse=system("git rev-parse --abbrev-ref HEAD")
+    lcd -
+    if l:gitrevparse!~"fatal: not a git repository"
+      let b:gitbranch="(".substitute(l:gitrevparse, '\n', '', 'g').") "
+    endif
+  endif
+endfunction
+    
+augroup GetGitBranch
+  autocmd!
+  autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
+augroup END
