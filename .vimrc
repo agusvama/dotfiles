@@ -31,7 +31,7 @@ set foldlevel=99
 nnoremap <backspace> za
 
 "color
-colo moonfly
+colo shades_of_purple
 
 "argwrap
 nnoremap <silent> <leader>a :ArgWrap<CR>
@@ -47,7 +47,7 @@ let g:netrw_banner = 1
 "open files in a new tab
 let g:netrw_browse_split = 3
 
-"set relativenumber
+set number
 
 "status bar
 set laststatus=2
@@ -63,7 +63,7 @@ set statusline+=%c
 set statusline+=\ 
 set statusline+=|
 set statusline+=\ 
-set statusline+=%F
+set statusline+=%f
 set statusline+=\ 
 set statusline+=|
 set statusline+=\ 
@@ -95,3 +95,5 @@ augroup GetGitBranch
   autocmd!
   autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
 augroup END
+
+hi Normal guibg=NONE ctermbg=NONE
