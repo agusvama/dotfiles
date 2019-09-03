@@ -4,7 +4,6 @@ execute pathogen#infect()
 set tabstop=2
 set shiftwidth=2
 set expandtab
-syntax on
 filetype plugin indent on
 set autoindent
 set showcmd " show me what i'm typing
@@ -12,11 +11,6 @@ set noswapfile " don't use swap file
 set ignorecase "search whatever, lower or uppercase
 set smartcase  "but not when search pattern contains upper case
 set encoding=utf-8
-
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
 
 "don't highlight parenthesis, brackets, keys
 "let loaded_matchparen=1
@@ -27,11 +21,13 @@ nnoremap <silent> <leader>c :noh<CR>
 "enable folding
 set foldmethod=indent
 set foldlevel=99
-"set spacebar for fold code
+"set backspace for fold code
 nnoremap <backspace> za
 
 "color
-colo shades_of_purple
+"set background=dark
+syntax enable
+colorscheme darktheme
 
 "argwrap
 nnoremap <silent> <leader>a :ArgWrap<CR>
@@ -48,6 +44,65 @@ let g:netrw_banner = 1
 let g:netrw_browse_split = 3
 
 set number
+set modelines=0
+set nomodeline
+
+"RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+
+"vim background transparent
+hi Normal guibg=NONE ctermbg=NONE
+
+"vim signify options
+let g:signify_vcs_list = [ 'git' ]
+
+"Colorizer config
+"only highlight certain filetypes
+:let g:colorizer_auto_filetype='css,html'
+
+"syntastic configuration
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"split
+set splitbelow
+set splitright
+
+"highlight search
+set hlsearch
+
+"silicon
+let g:silicon = {
+      \ 'theme':              'DarkNeon',
+      \ 'font':                  'Hack',
+      \ 'background':         '#aaaaff',
+      \ 'shadow-color':       '#555555',
+      \ 'line-pad':                   2,
+      \ 'pad-horiz':                  5,
+      \ 'pad-vert':                   5,
+      \ 'shadow-blur-radius':         0,
+      \ 'shadow-offset-x':            0,
+      \ 'shadow-offset-y':            0,
+      \ 'line-number':           v:true,
+      \ 'round-corner':          v:true,
+      \ 'window-controls':       v:false,
+      \ }
+
+"auto-expanding
+inoremap ( ()<C-c>i
+inoremap { {}<C-c>i
+inoremap [ []<C-c>i
+inoremap < <><C-c>i
+inoremap ' ''<C-c>i
+inoremap " ""<C-c>i
 
 "status bar
 set laststatus=2
@@ -60,7 +115,11 @@ set statusline+=\
 set statusline+=%l
 set statusline+=:
 set statusline+=%c
+set statusline+=|
 set statusline+=\ 
+set statusline+=%P
+set statusline+=->
+set statusline+=%L
 set statusline+=|
 set statusline+=\ 
 set statusline+=%f
@@ -95,5 +154,3 @@ augroup GetGitBranch
   autocmd!
   autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
 augroup END
-
-hi Normal guibg=NONE ctermbg=NONE
