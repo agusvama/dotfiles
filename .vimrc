@@ -53,7 +53,7 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 
 "vim background transparent
-hi Normal guibg=NONE ctermbg=NONE
+"hi Normal guibg=NONE ctermbg=NONE
 
 "vim signify options
 let g:signify_vcs_list = [ 'git' ]
@@ -61,16 +61,6 @@ let g:signify_vcs_list = [ 'git' ]
 "Colorizer config
 "only highlight certain filetypes
 :let g:colorizer_auto_filetype='css,html'
-
-"syntastic configuration
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 "split
 set splitbelow
@@ -95,14 +85,6 @@ let g:silicon = {
       \ 'round-corner':          v:true,
       \ 'window-controls':       v:false,
       \ }
-
-"auto-expanding
-inoremap ( ()<C-c>i
-inoremap { {}<C-c>i
-inoremap [ []<C-c>i
-inoremap < <><C-c>i
-inoremap ' ''<C-c>i
-inoremap " ""<C-c>i
 
 "status bar
 set laststatus=2

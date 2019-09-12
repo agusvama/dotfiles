@@ -1,10 +1,6 @@
 #PS1=' ( ._.)φ__ \w > '
-#cyan
-PS1="\[\e[38;5;79m\]\w > \[\e[0m\]
-\`if [ \$? = 0 ]; 
-  then echo -e '\e[30;48;5;6m( ._.)φ__\e[0m'
-  else echo \[\e[31m\]'( o_o)φ__'\[\e[0m\]; fi
-\` "
+PS1="\[\e[38;5;79m\]\w > \e[38;5;99m[\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)]\e[0m
+\e[30;48;5;6m( ._.)φ__\e[0m "
 
 export PATH="$HOME/.local/bin:/usr/sbin/:$HOME/.node_modules_global/bin:$PATH"
 
