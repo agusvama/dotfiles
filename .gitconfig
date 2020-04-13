@@ -1,0 +1,8 @@
+[user]
+  email = agustin@logicalbricks.com
+  name = maldad
+[core]
+  editor = vim
+  pager = less -R
+[push]
+  default = current
