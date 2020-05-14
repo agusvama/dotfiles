@@ -1,0 +1,2 @@
+#!/bin/bash
+dhclient -v -4 -pf /root/dhclient.pid $1

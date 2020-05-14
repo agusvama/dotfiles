@@ -1,0 +1,2 @@
+#!/bin/bash
+wpa_supplicant -B -P /root/wpa_supplicant.pid -d -D wext -i $1 -c $2
