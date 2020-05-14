@@ -1,0 +1,20 @@
+Config { font = "-*-Fixed-Bold-R-Normal-*-14-*-*-*-*-*-*-*"
+       , bgColor = "black"
+       , fgColor = "#c2b9df"
+       , position = TopW L 100
+       , hideOnStart = False
+       , allDesktops = True
+       , overrideRedirect = False
+       , commands = [ Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run Swap [] 10
+                    , Run Date "%d/%b/%C %H:%M" "date" 10
+                    , Run StdinReader
+                    , Run BatteryP ["BAT0"] ["-t", "(<left>%)"] 600
+                    , Run DiskU [("/", "<free>"), ("/home", "<free>")] ["-L", "20", "-H", "50", "-m", "1", "-p", "3"] 20
+                    , Run MPD ["-t", "<artist> - <title> (<album> / <date>)"] 10
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader% %mpd% } { %cpu% | %memory% * %swap% | <fc=#00ff00>%battery%</fc> | %disku% | <fc=#ee9a00>%date%</fc>"
+       }

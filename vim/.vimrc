@@ -1,6 +1,38 @@
 execute pathogen#infect()
 map <F2> :%s#\s\+$##<cr>
 
+call plug#begin('~/.vim/plugged')
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+" Plug 'junegunn/vim-easy-align'
+" Util
+Plug 'chrisbra/Colorizer'
+Plug 'Yggdroot/indentLine'
+Plug 'camspiers/lens.vim'
+Plug 'gregsexton/MatchTag'
+Plug 'luochen1990/rainbow'
+Plug 'vim-scripts/ShowTrailingWhitespace'
+Plug 'godlygeek/tabular'
+Plug 'FooSoft/vim-argwrap'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-commentary'
+Plug 'mhinz/vim-startify'
+Plug 'mattn/emmet-vim'
+" rails
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-rails'
+Plug 'thoughtbot/vim-rspec'
+" git
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+" colors
+Plug 'arzg/vim-substrata'
+Plug 'yassinebridi/vim-purpura'
+Plug 'tomasiser/vim-code-dark'
+
+" Initialize plugin system
+call plug#end()
+
 "leader remap
 let mapleader = " "
 
@@ -20,7 +52,7 @@ set encoding=utf-8
 "let loaded_matchparen=1
 
 "use esc for clean highlighted search
-nnoremap <silent> <leader>c :noh<CR> 
+nnoremap <silent> <leader>c :noh<CR>
 
 "enable folding
 set foldmethod=indent
@@ -31,17 +63,16 @@ nnoremap <backspace> za
 "color
 "set background=dark
 syntax enable
-colorscheme oceanic
+colorscheme codedark
 highlight ShowTrailingWhitespace ctermbg=LightMagenta guibg=NONE
-autocmd BufEnter *.hs colorscheme onedark
-autocmd BufEnter *.hs hi Normal guibg=NONE ctermbg=NONE
-" autocmd BufEnter *.erb colorscheme oceanic
+" autocmd BufEnter *.erb colorscheme codedark
+" autocmd BufEnter *.hs hi Normal guibg=NONE ctermbg=NONE
 
 "argwrap
 nnoremap <silent> <leader>a :ArgWrap<CR>
 
 "set leader + , for expand html with emmet
-let g:user_emmet_leader_key=','
+" let g:user_emmet_leader_key=','
 
 "netrw (vim native file explorer)
 "style to display files
@@ -61,7 +92,7 @@ map <Leader>t :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 
 "vim background transparent
-hi Normal guibg=NONE ctermbg=NONE
+" hi Normal guibg=NONE ctermbg=NONE
 
 "vim signify options
 let g:signify_vcs_list = [ 'git' ]
@@ -93,8 +124,8 @@ let g:rainbow_active = 1
 " map <leader>f :TagbarToggle<CR>
 
 "airline
-let g:airline_theme='bubblegum'
-let g:airline#extensions#hunks#enabled = 1
+" let g:airline_theme='bubblegum'
+" let g:airline#extensions#hunks#enabled = 1
 
 "vimagit
 map <leader>m :Magit<CR>
@@ -103,70 +134,9 @@ map <leader>m :Magit<CR>
 xnoremap <C-c> "+y
 nnoremap <C-p> "+p
 
-"silicon
-let g:silicon = {
-      \ 'theme':              'DarkNeon',
-      \ 'font':                  'Hack',
-      \ 'background':         '#aaaaff',
-      \ 'shadow-color':       '#555555',
-      \ 'line-pad':                   2,
-      \ 'pad-horiz':                  5,
-      \ 'pad-vert':                   5,
-      \ 'shadow-blur-radius':         0,
-      \ 'shadow-offset-x':            0,
-      \ 'shadow-offset-y':            0,
-      \ 'line-number':           v:true,
-      \ 'round-corner':          v:true,
-      \ 'window-controls':       v:false,
-      \ }
+" move visual lines
+xnoremap K :move '<-2<CR>gv-gv
+xnoremap J :move '>+1<CR>gv-gv
 
-"status bar
-" set laststatus=2
-" set statusline=
-" set statusline+=%1*
-" hi User1 ctermfg=darkgreen
-" set statusline+=%=
-" set statusline+=|
-" set statusline+=\ 
-" set statusline+=%l
-" set statusline+=:
-" set statusline+=%c
-" set statusline+=|
-" set statusline+=\ 
-" set statusline+=%P
-" set statusline+=->
-" set statusline+=%L
-" set statusline+=|
-" set statusline+=\ 
-" set statusline+=%f
-" set statusline+=\ 
-" set statusline+=|
-" set statusline+=\ 
-" set statusline+=%{b:gitbranch}
-" set statusline+=\ 
-" set statusline+=%m
-" set statusline+=\ 
-" set statusline+=|
-" set statusline+=\ 
-" set statusline+=%y
-" set statusline+=\ 
-" set statusline+=|
-" set statusline+=\ 
-" set statusline+=%{strlen(&fenc)?&fenc:'none'}
-
-" function! StatuslineGitBranch()
-"   let b:gitbranch=""
-"   if &modifiable
-"     lcd %:p:h
-"     let l:gitrevparse=system("git rev-parse --abbrev-ref HEAD")
-"     lcd -
-"     if l:gitrevparse!~"fatal: not a git repository"
-"       let b:gitbranch="(".substitute(l:gitrevparse, '\n', '', 'g').") "
-"     endif
-"   endif
-" endfunction
-
-" augroup GetGitBranch
-"   autocmd!
-"   autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
-" augroup END
+" startify
+let g:startify_relative_path = 0
