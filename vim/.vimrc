@@ -15,7 +15,6 @@ Plug 'godlygeek/tabular'
 Plug 'FooSoft/vim-argwrap'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-commentary'
-Plug 'mhinz/vim-startify'
 Plug 'mattn/emmet-vim'
 " rails
 Plug 'tpope/vim-endwise'
@@ -29,6 +28,9 @@ Plug 'tpope/vim-rhubarb'
 Plug 'arzg/vim-substrata'
 Plug 'yassinebridi/vim-purpura'
 Plug 'tomasiser/vim-code-dark'
+Plug 'bignimbus/pop-punk.vim'
+" Fun
+Plug 'nbardiuk/vim-gol'
 
 " Initialize plugin system
 call plug#end()
@@ -63,9 +65,10 @@ nnoremap <backspace> za
 "color
 "set background=dark
 syntax enable
-colorscheme codedark
+colorscheme corvine
 highlight ShowTrailingWhitespace ctermbg=LightMagenta guibg=NONE
-" autocmd BufEnter *.erb colorscheme codedark
+" autocmd BufEnter *.erb colorscheme corvine
+" autocmd BufEnter *.js  colorscheme codedark
 " autocmd BufEnter *.hs hi Normal guibg=NONE ctermbg=NONE
 
 "argwrap
@@ -92,7 +95,7 @@ map <Leader>t :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 
 "vim background transparent
-" hi Normal guibg=NONE ctermbg=NONE
+hi Normal guibg=NONE ctermbg=NONE
 
 "vim signify options
 let g:signify_vcs_list = [ 'git' ]
@@ -124,8 +127,8 @@ let g:rainbow_active = 1
 " map <leader>f :TagbarToggle<CR>
 
 "airline
-" let g:airline_theme='bubblegum'
-" let g:airline#extensions#hunks#enabled = 1
+let g:airline_theme='bubblegum'
+let g:airline#extensions#hunks#enabled = 1
 
 "vimagit
 map <leader>m :Magit<CR>
@@ -140,3 +143,49 @@ xnoremap J :move '>+1<CR>gv-gv
 
 " startify
 let g:startify_relative_path = 0
+
+"status bar
+set laststatus=2
+set statusline=
+set statusline+=%1*
+hi User1 ctermfg=darkgreen
+set statusline+=%=
+set statusline+=|
+set statusline+=\ 
+set statusline+=%f
+set statusline+=|
+set statusline+=\ 
+set statusline+=%l
+set statusline+=:
+set statusline+=%c
+set statusline+=\ 
+set statusline+=|
+set statusline+=\ 
+set statusline+=%{b:gitbranch}
+set statusline+=\ 
+set statusline+=%m
+set statusline+=\ 
+set statusline+=|
+set statusline+=\ 
+set statusline+=%y
+set statusline+=\ 
+set statusline+=|
+set statusline+=\ 
+set statusline+=%{strlen(&fenc)?&fenc:'none'}
+
+function! StatuslineGitBranch()
+  let b:gitbranch=""
+  if &modifiable
+    lcd %:p:h
+    let l:gitrevparse=system("git rev-parse --abbrev-ref HEAD")
+    lcd -
+    if l:gitrevparse!~"fatal: not a git repository"
+      let b:gitbranch="(".substitute(l:gitrevparse, '\n', '', 'g').") "
+    endif
+  endif
+endfunction
+
+augroup GetGitBranch
+  autocmd!
+  autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
+augroup END
