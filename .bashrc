@@ -4,9 +4,6 @@ PS1="\[\e[38;5;79m\]\w > \e[38;5;99m[\$(git branch 2>/dev/null | grep '^*' | col
 
 export PATH="$HOME/.local/bin:/usr/sbin/:$HOME/.node_modules_global/bin:$PATH"
 
-#aliases
-alias vi='vim'
-
 #append any additional sh scripts found in /etc/profile.d/:
 for profile_script in /etc/profile.d/*.sh ; do
     if [ -x $profile_script ]; then
