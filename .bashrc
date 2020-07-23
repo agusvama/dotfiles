@@ -1,6 +1,6 @@
-#PS1=' ( ._.)φ__ \w > '
-PS1="\[\e[38;5;79m\]\w > \e[38;5;99m[\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)]\e[0m
-\e[30;48;5;6m( ._.)φ__\e[0m "
+#PS1="\[\033[01;32m\]( ._.)φ__ \[\033[00m\] "
+PS1="\[\033[38;5;79m\]\w > \[\033[38;5;99m\][\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)]\[\033[00m\] 
+\[\033[30;48;5;6m\]( ._.)φ__\[\033[00m\] "
 
 export PATH="$HOME/.local/bin:/usr/sbin/:$HOME/.node_modules_global/bin:$PATH"
 
