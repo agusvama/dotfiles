@@ -10,7 +10,7 @@ import System.IO
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 
-myTerminal = "sakura"
+myTerminal = "gnome-terminal"
 
 -- focus with the mouse
 myFocusFollowMouse :: Bool
