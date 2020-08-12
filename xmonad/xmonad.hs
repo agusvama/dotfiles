@@ -122,6 +122,8 @@ defaults = def
   , ("<XF86AudioPlay>", spawn "mpc toggle")
   , ("<XF86AudioNext>", spawn "mpc next")
   , ("<XF86AudioPrev>", spawn "mpc prev")
+  , ("<XF86MonBrightnessUp>", spawn "xbacklight -inc 5")
+  , ("<XF86MonBrightnessDown>", spawn "xbacklight -dec 5")
   ]
 
 -- TODO:
