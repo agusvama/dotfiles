@@ -41,6 +41,13 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   -- launch dmenu
   , ((modm, xK_BackSpace), spawn $ "dmenu_run")
 
+  -- screenshots
+  -- select area
+  , ((modm, xK_s), spawn $ "sleep 0.2; scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'")
+
+  -- full screen
+  , ((modm .|. shiftMask, xK_s), spawn $ "scrot /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'")
+
   -- close focused window
   , ((modm .|. shiftMask, xK_c), kill)
 
