@@ -18,7 +18,7 @@ myFocusFollowsMouse = True
 
 -- clicking on a window to focus also performs a click
 myClickJustFocuses :: Bool
-myClickJustFocuses = True
+myClickJustFocuses = False
 
 -- window border width
 myBorderWidth = 2
