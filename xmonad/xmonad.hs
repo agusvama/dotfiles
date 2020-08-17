@@ -13,12 +13,12 @@ import qualified Data.Map as M
 myTerminal = "gnome-terminal"
 
 -- focus with the mouse
-myFocusFollowMouse :: Bool
-myFocusFollowMouse = True
+myFocusFollowsMouse :: Bool
+myFocusFollowsMouse = True
 
 -- clicking on a window to focus also performs a click
 myClickJustFocuses :: Bool
-myClickJustFocuses = False
+myClickJustFocuses = True
 
 -- window border width
 myBorderWidth = 2
@@ -102,7 +102,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   -- This is to switch between monitors!
   [
     ((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-      | (key, sc) <- zip [xK_m, xK_n, xK_r] [0..]
+      | (key, sc) <- zip [xK_n, xK_m, xK_r] [0..]
       , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
   ]
 
@@ -122,19 +122,15 @@ defaults = def
   , borderWidth = myBorderWidth
   , normalBorderColor = myNormalBorderColor
   , focusedBorderColor = myFocusedBorderColor
+  , focusFollowsMouse = myFocusFollowsMouse
+  , clickJustFocuses = myClickJustFocuses
   , keys = myKeys
   } `additionalKeysP`
-  [ ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume 1 -5%")
-  , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume 1 +5%")
+  [ ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ -5%")
+  , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%")
   , ("<XF86AudioPlay>", spawn "mpc toggle")
   , ("<XF86AudioNext>", spawn "mpc next")
   , ("<XF86AudioPrev>", spawn "mpc prev")
   , ("<XF86MonBrightnessUp>", spawn "xbacklight -inc 5")
   , ("<XF86MonBrightnessDown>", spawn "xbacklight -dec 5")
   ]
-
--- TODO:
--- [x] finish reading the default conf
--- [x] xmobar
--- [ ] wallpaper
--- [x] double monitor
