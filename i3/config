@@ -1,17 +1,26 @@
-#brightness
+# brightness
 exec_always xbacklight -set 5
-#wallpaper
+# wallpaper
 exec_always feh --bg-fill ~/background
+# screen mode
+exec_always xrandr --output HDMI-A-0 --mode 3440x1440 --primary --left-of DisplayPort-2
 # exec_always feh --bg-scale ~/background
 # --bg-tile
 # --bg-center
 # --bg-scale
 # --bg-fill
 
-#new_window pixel 20
+# screenshots
+bindsym $mod+s --release exec "scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+
+# network tray icon
+exec_always --no-startup-id nm-applet
+
+# volume icon
+exec_always --no-startup-id volumeicon
 
 #start terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec gnome-terminal
 
 font pango:DejaVu Sans Mono 12
 set $mod Mod1
@@ -31,19 +40,19 @@ bindsym $mod+Shift+l move right
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status --config ~/.config/i3/i3status.conf
-        position top
-        #font pango:FontAwesome Regular, Icons 12
-        font pango:Inconsolata 12
-        colors {
-            background #000000
-            statusline #ffffff
-            separator #666666
-            focused_workspace  #926292 #644364 #ffffff
-            active_workspace   #333333 #5f676a #ffffff
-            inactive_workspace #333333 #222222 #888888
-            urgent_workspace   #2f343a #900000 #ffffff
-		}
+  status_command i3status --config ~/.config/i3/i3status.conf
+  position top
+  font pango:Inconsolata 11
+  colors {
+    background #000000
+      statusline #ffffff
+      separator #666666
+      focused_workspace  #926292 #644364 #ffffff
+      active_workspace   #333333 #5f676a #ffffff
+      inactive_workspace #333333 #222222 #888888
+      urgent_workspace   #2f343a #900000 #ffffff
+  }
+  tray_output primary
 }
 
 # A purple theme for windows
@@ -80,8 +89,8 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 #multimedia keys
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
 
 # Sreen brightness controls
@@ -163,14 +172,15 @@ bindsym $mod+- split h
 
 # split in vertical orientation
 bindsym $mod+v split v
+# split in horizontal orientation
+bindsym $mod+e layout toggle split
 
 # enter fullscreen mode for the focused container
 # bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+# bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -194,26 +204,26 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+# These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+# Pressing left will shrink the window’s width.
+# Pressing right will grow the window’s width.
+# Pressing up will shrink the window’s height.
+# Pressing down will grow the window’s height.
+  bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+# same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+# back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
