@@ -7,10 +7,7 @@ else echo '\[\033[38;5;79m\]\w > \[\033[38;5;99m\]['\$(git branch 2>/dev/null | 
 
 export PATH="$HOME/.local/bin:/usr/sbin/:$PATH"
 
-#append any additional sh scripts found in /etc/profile.d/:
-for profile_script in /etc/profile.d/*.sh ; do
-    if [ -x $profile_script ]; then
-        . $profile_script
-    fi
-done
-unset profile_script
+# uncomment these to use RVM
+# [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# uncomment these to use RVM
