@@ -1,4 +1,3 @@
-execute pathogen#infect()
 map <F2> :%s#\s\+$##<cr>
 
 call plug#begin('~/.vim/plugged')
@@ -7,7 +6,6 @@ call plug#begin('~/.vim/plugged')
 " Util
 Plug 'chrisbra/Colorizer'
 Plug 'Yggdroot/indentLine'
-Plug 'camspiers/lens.vim'
 Plug 'gregsexton/MatchTag'
 Plug 'luochen1990/rainbow'
 Plug 'vim-scripts/ShowTrailingWhitespace'
@@ -16,6 +14,8 @@ Plug 'FooSoft/vim-argwrap'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-commentary'
 Plug 'mattn/emmet-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " rails
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
