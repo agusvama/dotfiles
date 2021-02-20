@@ -11,3 +11,7 @@ export PATH="$HOME/.local/bin:/usr/sbin/:$PATH"
 # [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 # uncomment these to use RVM
+
+# aliases to suspend and shutdown on Pop-OS
+# alias zzz="systemctl suspend"
+# alias shu="shutdown -h now"
