@@ -25,10 +25,10 @@ Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 " colors
-Plug 'arzg/vim-substrata'
-Plug 'yassinebridi/vim-purpura'
-Plug 'tomasiser/vim-code-dark'
-Plug 'bignimbus/pop-punk.vim'
+" Plug 'arzg/vim-substrata'
+" Plug 'yassinebridi/vim-purpura'
+" Plug 'tomasiser/vim-code-dark'
+" Plug 'bignimbus/pop-punk.vim'
 " Fun
 Plug 'nbardiuk/vim-gol'
 
