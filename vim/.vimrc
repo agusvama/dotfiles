@@ -1,3 +1,4 @@
+execute pathogen#infect()
 map <F2> :%s#\s\+$##<cr>
 
 call plug#begin('~/.vim/plugged')
@@ -5,7 +6,8 @@ call plug#begin('~/.vim/plugged')
 " Plug 'junegunn/vim-easy-align'
 " Util
 Plug 'chrisbra/Colorizer'
-Plug 'Yggdroot/indentLine'
+Plug 'junegunn/limelight.vim'
+" Plug 'Yggdroot/indentLine'
 Plug 'gregsexton/MatchTag'
 Plug 'luochen1990/rainbow'
 Plug 'vim-scripts/ShowTrailingWhitespace'
@@ -16,14 +18,20 @@ Plug 'tpope/vim-commentary'
 Plug 'mattn/emmet-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'nathanaelkane/vim-indent-guides'
 " rails
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'thoughtbot/vim-rspec'
 " git
 Plug 'mhinz/vim-signify'
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive' -> deactivated to use the 3.0 version instead of the latest
+" Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-rhubarb'
+" new plugins by apux
+Plug 'Raimondi/delimitMate'
+Plug 'AndrewRadev/splitjoin.vim' " dark block to one line switcher
+Plug 'vim-ruby/vim-ruby'
 " colors
 " Plug 'arzg/vim-substrata'
 " Plug 'yassinebridi/vim-purpura'
@@ -65,7 +73,7 @@ nnoremap <backspace> za
 "color
 "set background=dark
 syntax enable
-colorscheme corvine
+colorscheme substrata
 highlight ShowTrailingWhitespace ctermbg=LightMagenta guibg=NONE
 " autocmd BufEnter *.erb colorscheme corvine
 " autocmd BufEnter *.js  colorscheme codedark
@@ -95,7 +103,7 @@ map <Leader>t :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 
 "vim background transparent
-hi Normal guibg=NONE ctermbg=NONE
+" hi Normal guibg=NONE ctermbg=NONE
 
 "vim signify options
 let g:signify_vcs_list = [ 'git' ]
@@ -110,6 +118,11 @@ set splitright
 
 "highlight search
 set hlsearch
+
+"indent guide color lines
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=13
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=7
 
 "indentLine
 "let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -143,3 +156,15 @@ xnoremap J :move '>+1<CR>gv-gv
 
 " startify
 let g:startify_relative_path = 0
+
+augroup vimrcEx
+  autocmd!
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it for commit messages, when the position is invalid, or when
+  " inside an event handler (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+augroup END
