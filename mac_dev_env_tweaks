@@ -1,0 +1,15 @@
+Switch zsh for bash shell
+	$ chsh -s /bin/bash
+
+iTerm loads .bash_profile first, so add this line to that file
+
+  . ~/.bashrc
+
+Remove "Last login" message
+
+  $ cd
+  $ touch .hushlogin
+
+Remove "zsh is now the default" warning
+Add this line to .bashrc
+  export BASH_SILENCE_DEPRECATION_WARNING=1
